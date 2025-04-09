@@ -2,6 +2,25 @@
 
 A React application that renders maps with support for both interactive viewing and static image generation. Built with React, TypeScript, Leaflet, and Tailwind CSS.
 
+## Demo
+
+You can try the live demo at:
+[https://static-map.devkh.com](https://static-map.devkh.com)
+
+### Example URLs
+
+Interactive Map:
+
+```
+https://static-map.devkh.com/?lat=11.628984&lng=104.876086
+```
+
+Static Image:
+
+```
+https://static-map.devkh.com/?lat=11.628984&lng=104.876086&render=image
+```
+
 ## Features
 
 - Interactive map viewing with multiple base layers:
@@ -24,20 +43,6 @@ The application supports the following URL parameters:
 ### Render Mode
 
 - `render`: Set to "image" to generate a static image instead of an interactive map
-
-## Usage Examples
-
-### Interactive Map
-
-```
-http://localhost:3000?lat=11.628984&lng=104.876086
-```
-
-### Static Image
-
-```
-http://localhost:3000?lat=11.628984&lng=104.876086&render=image
-```
 
 ## Development
 
