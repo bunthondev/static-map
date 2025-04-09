@@ -1,0 +1,21 @@
+services:
+  static-map-blue:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: ${ENVIRONMENT}
+    container_name: static-map-blue
+    networks:
+      - traefik
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-blue.rule=Host(`${DOMAIN}`)'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-blue.entrypoints=websecure'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-blue.tls=true'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-blue.tls.certresolver=myresolver'
+
+networks:
+  traefik:
+    external: true

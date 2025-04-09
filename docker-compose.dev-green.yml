@@ -1,0 +1,21 @@
+services:
+  static-map-green:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: ${ENVIRONMENT}
+    container_name: static-map-green
+    networks:
+      - traefik
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-green.rule=Host(`${DOMAIN}`)'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-green.entrypoints=websecure'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-green.tls=true'
+      - 'traefik.http.routers.${APP_NAME}-${ENVIRONMENT}-green.tls.certresolver=myresolver'
+
+networks:
+  traefik:
+    external: true
